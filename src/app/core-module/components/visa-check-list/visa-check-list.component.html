@@ -1,0 +1,65 @@
+<div class="accordion mb-3">
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <div class="accordion-button accordion-button-icon-none">
+        F-1 Visa Interview Checklist
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="row">
+        <div *ngFor="let checkListGroup of checkListData">
+          <div class="check-list-group mb-3">
+            <h5>{{checkListGroup.group}}</h5>
+            <ng-container *ngIf="!checkListGroup.hasSubGroups">
+              <div class="row">
+                <ng-container *ngFor="let item of checkListGroup.items">
+                  <div class="check-list-group-item col-12 col-md-4">
+                    <div class="form-check">
+                      <input class="form-check-input bio-checklist" type="checkbox" value="" id="{{item.id}}">
+                      <label class="form-check-label" for="{{item.id}}">
+                        {{item.name}} <span *ngIf="!item.required">&nbsp; (optional)</span>
+                      </label>
+                      <div class="error" *ngIf="isError(item.id)">Required</div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="checkListGroup.hasSubGroups">
+              <div class="row">
+                <ng-container *ngFor="let subGroup of checkListGroup.subCheckList">
+                  <div class="col-12 col-md-4 mb-4">
+                    <h6>{{subGroup.group}}</h6>
+                    <ng-container *ngFor="let subGroupItem of subGroup.items">
+                      <div class="check-list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input visa-checklist" type="checkbox" value=""
+                            id="{{subGroupItem.id}}">
+                          <label class="form-check-label" for="{{subGroupItem.id}}">
+                            {{subGroupItem.name}} <span *ngIf="!subGroupItem.required">&nbsp; (optional)</span>
+                          </label>
+                          <div class="error" *ngIf="isError(subGroupItem.id)">Required</div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+            <div class="col-12 text-end mt-2">
+              <button class="btn btn-primary btn-sm float-right"
+                (click)="validateVisaRequirements(checkListGroup.id)">Verify</button>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          * This information is for reference only and it is colleted from peoples personal experiences and online
+          resources. <br>
+          ** Addition documents might be required at the time of interview, follow Embassy/University requirements
+          time-to-time. This page was revised on May-31-2022.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

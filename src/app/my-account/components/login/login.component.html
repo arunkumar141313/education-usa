@@ -1,0 +1,49 @@
+<div class="container d-flex flex-column">
+  <div class="row align-items-center justify-content-center g-0 min-vh-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+      <div class="card smooth-shadow-md">
+        <div class="card-body p-6">
+          <div *ngIf="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <h2 class="col-12 text-center">
+                  Login
+                </h2>
+                <div class="col-12">
+                  <div class="mb-3 form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email"
+                      placeholder="Enter email" />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="mb-3 form-group">
+                    <label for="password" class="form-label">
+                      Password
+                    </label>
+                    <input type="password" class="form-control" id="password" formControlName="password"
+                      placeholder="Enter password" />
+                  </div>
+                </div>
+
+                <div class="col-12 text-center mt-2">
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="!loginForm.valid">
+                    Login
+                    <i class="bi bi-arrow-right"></i></button>
+                </div>
+
+                <div class="col-12 mt-2 text-end">
+                  <a href="/my-account/forgot-password">Forgot password</a>
+                </div>
+                <div class="col-12 mt-2 text-end">
+                 <a href="/my-account/register"> Don't have account register here</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

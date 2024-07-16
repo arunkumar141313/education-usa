@@ -1,0 +1,120 @@
+[
+    {
+      "id": 1,
+      "group": "Passport",
+      "items": [
+        {
+          "id": 1,
+          "name": "Passport",
+          "required": true
+        },
+        {
+          "id": 2,
+          "name": "Passport Photo",
+          "required": true
+        },
+        {
+          "id": 3,
+          "name": "Passport Copy",
+          "required": false
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 2,
+      "group": "Visa Application",
+      "items": [
+        {
+          "id": 4,
+          "name": "Visa Application",
+          "required": false
+        },
+        {
+          "id": 5,
+          "name": "Visa Application Fee Receipt",
+          "required": true
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 3,
+      "group": "Financial Documents",
+      "items": [
+        {
+          "id": 6,
+          "name": "Bank Statement",
+          "required": true
+        },
+        {
+          "id": 7,
+          "name": "Sponsorship Letter",
+          "required": true
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 4,
+      "group": "Education Documents",
+      "items": [
+        {
+          "id": 8,
+          "name": "Transcripts",
+          "required": true
+        },
+        {
+          "id": 9,
+          "name": "Degree Certificate",
+          "required": true
+        },
+        {
+          "id": 10,
+          "name": "Recommendation Letter",
+          "required": true
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 5,
+      "group": "Travel Documents",
+      "items": [
+        {
+          "id": 11,
+          "name": "Flight Ticket",
+          "required": false
+        },
+        {
+          "id": 12,
+          "name": "Travel Insurance",
+          "required": false
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 6,
+      "group": "Accommodation Documents",
+      "items": [
+        {
+          "id": 13,
+          "name": "Accommodation Booking",
+          "required": false
+        }
+      ],
+      "hasSubGroups": false
+    },
+    {
+      "id": 7,
+      "group": "Medical Documents",
+      "items": [
+        {
+          "id": 14,
+          "name": "Medical Certificate",
+          "required": false
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,153 @@
+<div id="interviewTravelForm">
+  <div *ngIf="interviewTravelForm">
+    <form [formGroup]="interviewTravelForm" (ngSubmit)="onSubmit()">
+      <!-- Interview travel details starts -->
+
+      <div class="accordion  mb-3">
+        <div class="accordion-item">
+
+          <div class="accordion-header">
+            <div class="accordion-button accordion-button-icon-none">
+              Add Interview Travel Preference
+            </div>
+          </div>
+
+          <div class="accordion-body">
+
+            <div class="error" *ngIf=" !disableActionButtons && dataProcessed && userInterviewDetails.length < 1">
+              Add <a href="/my-account/interview-details">interview details</a> to find travel partners.
+            </div>
+            <div class="error mb-3" *ngIf=" !disableActionButtons && dataProcessed && userInterviewTravelPartnerPreferences.length < 1">
+              Add interview travel preference to find travel partners.
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="interviewDetails" class="form-label">Select interview</label>
+                  <ng-select appearance="outline" labelForId="interviewDetails" [searchable]="true"
+                    [placeholder]="'Interview Details'" formControlName="interviewDetailsId" [required]="true">
+                    <ng-container *ngIf="userActiveInterviewDetails">
+                      <ng-option *ngFor="let interviewDetail of userActiveInterviewDetails"
+                        [value]="interviewDetail.id">
+                        {{ interviewDetail.embassy | idName: embassies }} -
+                        {{ interviewDetail.interviewDate |date:'mediumDate' }} -
+                        {{ interviewDetail.interviewStatus | interviewStatus }}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="travelFromState" class="form-label">Travel From State</label>
+                  <ng-select appearance="outline" labelForId="travelFromState" [searchable]="true"
+                    [placeholder]="'Travel from state'" formControlName="travelFromState" [required]="true">
+                    <ng-container *ngIf="states">
+                      <ng-option *ngFor="let state of states" [value]="state.id">{{state.name}}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3 form-group">
+                  <label for="travelFromCity" class="form-label">Travel From City</label>
+                  <input type="text" class="form-control" id="travelFromCity" formControlName="travelFromCity"
+                    placeholder="Enter travel from city" />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <div class="mb-3 form-group">
+                    <label for="travelDate" class="form-label">Travel Date</label>
+                    <input type="datetime-local" class="form-control" formControlName="travelDate" id="travelDate"
+                      placeholder="Travel date" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="genderPreference" class="form-label">Gender Preference</label>
+                  <ng-select appearance="outline" labelForId="genderPreference" [searchable]="true"
+                    [placeholder]="'Gender preference'" formControlName="genderPreference" [required]="true">
+                    <ng-container *ngIf="genderPreferences">
+                      <ng-option *ngFor="let genderPreference of genderPreferences" [value]="genderPreference.id">
+                        {{genderPreference.name}}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3 form-group">
+                  <label for="comments" class="form-label">Comments</label>
+                  <input type="text" class="form-control" id="comments" formControlName="comments"
+                    placeholder="Enter comments" />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="form-check">
+                  <label class="form-check-label" for="travelPartnerRequired">
+                    I need travel partner
+                  </label>
+                  <input class="form-check-input" type="checkbox" value="" id="travelPartnerRequired"
+                    formControlName="travelPartnerRequired">
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label" for="hasTravelPartner">
+                    I have/found my travel partner
+                  </label>
+                  <input class="form-check-input" type="checkbox" value="" id="hasTravelPartner"
+                    formControlName="hasTravelPartner">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="d-flex flex-row-reverse">
+                <ng-container *ngIf="interviewTravelForm.value.id > 0; else addForm">
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="!interviewTravelForm.valid">
+                    Update
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-secondary btn-sm mx-3" (click)="cancelEdit()">
+                    Cancel
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </ng-container>
+
+                <ng-template #addForm>
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="!interviewTravelForm.valid">
+                    Add
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </ng-template>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Interview travel details ends -->
+    </form>
+  </div>
+</div>
+
+<app-interview-travel-partner-preference-list [embassies]="embassies" [states]="states" [userInfo]="userInfo"
+  [disableActionButtons]="disableActionButtons" (onEditInterviewTravelPartner)="onEdit($event)"
+  (onDeleteInterviewTravelPartner)="onDelete($event)"
+  [interviewTravelPartnerPreferences]="userInterviewTravelPartnerPreferences">
+</app-interview-travel-partner-preference-list>

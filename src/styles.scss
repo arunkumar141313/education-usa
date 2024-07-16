@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+$primary: #3c3e89;
+$danger: #DA1212;
+$secondary: #73777B;
+
+$theme-colors: (
+  "primary": $primary,
+  "danger": $danger,
+  "secondary": $secondary
+);
+
+@import "./../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  background: #e0d8d8;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+
+.ngx-editor-content {
+  .NgxEditor {
+    .ProseMirror.NgxEditor__Content {
+      min-height: 120px !important;
+    }
+  }
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.border-bottom-1 {
+  border-bottom: 1px solid #00000030 !important;
+}
+
+%bs-icon-font-size-app {
+  font-size: 1.3rem;
+}
+
+.verified {
+  color: green;
+  @extend %bs-icon-font-size-app
+}
+
+.reviewed {
+  color: grey;
+  @extend %bs-icon-font-size-app
+}
+
+
+.accordion-button.accordion-button-icon-none::after {
+  display: none;
+}
+
+
+
+.error {
+  color: $danger;
+}
+
+.error-small {
+  color: $danger;
+  font-size: 0.2rem;
+}
+
+%red-left-border {
+  border-left: 3px solid $danger;
+}
+
+%green-left-border {
+  border-left: 3px solid green;
+}
+
+input[type=text].ng-invalid.ng-touched,
+input[type=password].ng-invalid.ng-touched,
+input[type=email].ng-invalid.ng-touched,
+input[type=number].ng-invalid.ng-touched,
+input[type=datetime-local].ng-invalid.ng-touched,
+input[type=select].ng-invalid.ng-touched {
+  @extend %red-left-border;
+}
+
+input[type=text].ng-valid.ng-touched,
+input[type=password].ng-valid.ng-touched,
+input[type=email].ng-valid.ng-touched,
+input[type=number].ng-valid.ng-touched,
+input[type=datetime-local].ng-valid.ng-touched,
+input[type=select].ng-valid.ng-touched {
+  @extend %green-left-border;
+}
+
+ng-select.ng-invalid.ng-touched {
+  .ng-select-container.ng-appearance-outline {
+    @extend %red-left-border;
+  }
+}
+
+ng-select.ng-valid.ng-touched {
+  .ng-select-container.ng-appearance-outline {
+    @extend %green-left-border;
+  }
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.modal.d-block {
+  background-color: #73777b;
+}
+
+.card-header {
+  background-color: #3c3e89;
+  color: white;
+  font-size: large;
+}
+
+.p-8 {
+  padding: 8px;
+}
+
+.btn:disabled {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+
+.data-required {
+  content: '*';
+  color: $danger;
+  font-size: medium;
+}
+
+.underlined,
+.underlined-small {
+  position: relative;
+  display: inline-block !important;
+}
+
+%underlined {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  height: 7px;
+  width: 100% !important;
+  border: solid 8px $primary;
+  border-color: $primary transparent transparent transparent;
+  border-radius: 50%;
+}
+
+.underlined::before {
+  @extend %underlined;
+}
+
+.underlined-small::before {
+  @extend %underlined;
+  border: solid 5px $primary;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; // remove the gap so it doesn't close
+}

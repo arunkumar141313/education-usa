@@ -1,0 +1,116 @@
+<div *ngIf="interviewDetailsForm" id="interviewDetailsForm">
+  <form [formGroup]="interviewDetailsForm" (ngSubmit)="onSubmit()">
+    <div>
+      <!-- Personal Info starts -->
+      <div class="accordion mb-3">
+        <div class="accordion-item">
+
+          <div class="accordion-header">
+            <div class="accordion-button accordion-button-icon-none">
+              Add Biometric or Visa Interview Details
+            </div>
+          </div>
+
+          <div class="accordion-body">
+            <div class="error mb-3" *ngIf="dataProcessed && userInterviewDetails.length < 1">Add interview details to find travel partners
+            </div>
+            <div class="row">
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="interviewType" class="form-label">Interview Type</label>
+                  <ng-select appearance="outline" labelForId="interviewType" [searchable]="true"
+                    [placeholder]="'Interview type'" formControlName="interviewType" required="true"
+                    (change)="onInterviewTypeChange()">
+                    <ng-container *ngIf="interviewTypes">
+                      <ng-option *ngFor="let interviewType of interviewTypes" [value]="interviewType.id">
+                        {{interviewType.name}}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="embassy" class="form-label">Embassy Location</label>
+                  <ng-select appearance="outline" labelForId="embassy" [searchable]="true"
+                    [placeholder]="'Select location'" formControlName="embassy">
+                    <ng-container *ngIf="embassies">
+                      <ng-option *ngFor="let embassy of embassies" [value]="embassy.id">{{embassy.name}}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <div class="mb-3 form-group">
+                    <label for="interviewDate" class="form-label">Interview Date</label>
+                    <input type="datetime-local" class="form-control" id="interviewDate" placeholder="Interview date'"
+                      formControlName="interviewDate" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3">
+                  <label for="interviewStatus" class="form-label">Interview Status</label>
+                  <ng-select appearance="outline" labelForId="interviewStatus" [searchable]="true"
+                    [placeholder]="'Interview status'" formControlName="interviewStatus" required="true">
+                    <ng-container *ngIf="interviewStatuses">
+                      <ng-option
+                        *ngFor="let interviewStatus of interviewStatuses | interviewStatusFilter: interviewDetailsForm.value.interviewType"
+                        [value]="interviewStatus.id">
+                        {{interviewStatus.name}}
+                      </ng-option>
+                    </ng-container>
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <div class="mb-3 form-group">
+                  <label for="comments" class="form-label">Comments</label>
+                  <input type="text" class="form-control" id="nickName" formControlName="comments"
+                    placeholder="Enter comments" />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="d-flex flex-row-reverse">
+                <ng-container *ngIf="interviewDetailsForm.value.id > 0; else addForm">
+                  <button type="submit" class="btn btn-primary btn-sm"
+                    [disabled]="!interviewDetailsForm.dirty || !interviewDetailsForm.valid">
+                    Update
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-secondary btn-sm mx-3" (click)="cancelEdit()">
+                    Cancel
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+
+                </ng-container>
+
+                <ng-template #addForm>
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="!interviewDetailsForm.valid">
+                    Add
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </ng-template>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-interviews-list [embassies]="embassies" (onEditInterviewDetails)="onEdit($event)"
+  (onDeleteInterviewDetails)="onDelete($event)" [userInterviewDetails]="userInterviewDetails"
+  [disableActionButtons]="disableActionButtons"></app-interviews-list>

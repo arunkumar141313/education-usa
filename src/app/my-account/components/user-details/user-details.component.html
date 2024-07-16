@@ -1,0 +1,107 @@
+<div *ngIf="userDetailsForm" class="mt-3">
+  <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmit()">
+    <!-- Personal Info starts -->
+    <div class="accordion mb-3">
+      <div class="accordion-item">
+
+        <div class="accordion-header">
+          <div class="accordion-button accordion-button-icon-none">
+            Personal Information
+          </div>
+        </div>
+
+        <div class="accordion-body">
+          <div class="row mb-3">
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                  placeholder="Enter first name" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                  placeholder="Enter last name" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="password" class="form-label">
+                  Password
+                </label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                  placeholder="Enter password" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+                  placeholder="Enter phone number" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="mb-3 form-group">
+                <label for="nickName" class="form-label">Nick Name</label>
+                <input type="text" class="form-control" id="nickName" formControlName="nickName"
+                  placeholder="Enter nick name" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 error">
+              Privacy Settings
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <label class="form-check-label" for="sharePhoneNumber">
+                  Share phone number to others
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="sharePhoneNumber"
+                  formControlName="sharePhoneNumber">
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <label class="form-check-label" for="shareOnlyNickName">
+                  Share only nick name to others
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="shareOnlyNickName"
+                  formControlName="shareOnlyNickName" >
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row mb-3">
+            <div class="d-flex flex-row-reverse">
+              <button type="submit" class="btn btn-primary btn-sm" [disabled]="!userDetailsForm.valid">
+                Create profile
+                <i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <div class="col-12 mb-1 text-end">
+            <a href="/my-account/login"> I already have account login here</a>
+           </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

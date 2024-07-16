@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "question": "What is F-1 visa?",
+    "answer": "The F-1 Visa (Academic Student) allows you to enter the United States as a full-time student at an accredited college, university, seminary, conservatory, academic high school, elementary school, or other academic institution or in a language training program. You must be enrolled in a program or course of study that culminates in a degree, diploma, or certificate and your school must be authorized by the U.S. government to accept international students.",
+    "enableVoting": true,
+    "upVotes": 5,
+    "downVotes": 1,
+    "status": 1,
+    "sources": [
+      "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment"
+    ],
+    "tags": [
+      "F-1",
+      "VISA"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is M-1 visa?",
+    "answer": "The M-1 visa (Vocational Student) category includes students in vocational or other nonacademic programs, other than language training.",
+    "enableVoting": true,
+    "upVotes": 2,
+    "downVotes": 1,
+    "status": 2,
+    "sources": [
+      "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment"
+    ],
+    "tags": [
+      "M-1",
+      "VISA"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Eligibility for F-1 or M-1",
+    "answer": "You must be enrolled in an academic educational program, a language-training program, or a vocational program Your school must be approved by the Student and Exchange Visitors Program, Immigration & Customs Enforcement You must be enrolled as a full-time student at the institution You must be proficient in English or be enrolled in courses leading to English proficiency You must have sufficient funds available for self-support during the entire proposed course of study You must maintain a residence abroad which you have no intention of giving up.",
+    "enableVoting": false,
+    "upVotes": 2,
+    "downVotes": 1,
+    "status": 3,
+    "sources": [
+      "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment"
+    ],
+    "tags": [
+      "F-1",
+      "M-1",
+      "VISA"
+    ]
+  }
+]

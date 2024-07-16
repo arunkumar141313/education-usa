@@ -1,0 +1,77 @@
+<ng-container *ngIf="userInterviewDetails && userInterviewDetails.length">
+  <div class="row">
+    <ng-container *ngFor="let interview of userInterviewDetails; let i = index;">
+      <div class="col-12 col-lg-4 col-md-6 ">
+        <div class="card mb-2">
+          <div class="card-header">
+            Interview #{{i+1}}
+            <span class="float-end">{{ interview.interviewType | idName: lookupConstants}}</span>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span>Location:&nbsp;</span>
+                <span class="float-end">{{interview.embassy | idName: embassies}}</span>
+              <li class="list-group-item">
+                <span>Date:&nbsp;</span>
+                <span class="float-end">{{interview.interviewDate | dateTimeZonePipe}}</span>
+              </li>
+              <li class="list-group-item">
+                <span>Status:&nbsp;</span>
+                <span class="float-end">{{interview.interviewStatus | interviewStatus}}</span>
+              </li>
+              <li class="list-group-item">
+                <span>Comments:&nbsp;</span>
+                <span class="float-end">{{interview.comments || 'N/A'}}</span>
+              </li>
+              <li class="list-group-item p-8">
+                <div class="d-flex justify-content-evenly">
+                  <div class="">
+                    <button type="button" [disabled]="disableActionButtons" (click)="onEdit(interview)"
+                      class="btn btn-secondary btn-sm">
+                      <i class="bi bi-pencil-square"></i>&nbsp;
+                      <span>Edit</span>
+                    </button>
+                  </div>
+                  <div class="">
+                    <button type="button" [disabled]="disableActionButtons" (click)="onDelete(interview)"
+                      class="btn btn-danger btn-sm">
+                      <i class="bi bi-trash"></i>&nbsp;
+                      <span>Delete</span>
+                    </button>
+                  </div>
+                  <div *ngIf="!interview.hideFindPartnerButton">
+                    <button type="button" [disabled]="disableActionButtons" (click)="findPartners()"
+                      class="btn btn-primary btn-sm">
+                      <i class="bi bi-file-earmark-text"></i>&nbsp;
+                      <span>Partners</span>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+
+<div class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+  [ngClass]="openModal ? 'd-block show fade' : 'd-none'">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete confirmation</h5>
+        <button type="button" class="btn-close" (click)="deleteContinue()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this information.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="deleteContinue()">Close</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteContinue(true)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

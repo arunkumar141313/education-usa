@@ -1,0 +1,28 @@
+[
+  {
+    "pageUrls": [
+      "",
+      "/"
+    ],
+    "title": "Education In USA, We help your study abroad dreams",
+    "description": "www.educationinusa.org is a team of higher education aspirants committed to helping students to fulfill their study abroad dreams for free by connecting students with alumni.",
+    "url": "http://educationinusa.org",
+    "keywords": [
+      "Education In USA",
+      "Study Abroad",
+      "USA VISA",
+      "USA University Application",
+      "USA Visa Appointment",
+      "USA Visa Interview"
+    ],
+    "og": [
+      {
+        "type": "image",
+        "url": "https://educationinusa.s3.ap-south-1.amazonaws.com/prod/images/study-abroad-concept.jpg",
+        "width": "350",
+        "height": "300",
+        "alt": "Student with books and visa - Education In USA"
+      }
+    ]
+  }
+]
